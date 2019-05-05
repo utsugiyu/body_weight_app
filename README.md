@@ -1,24 +1,11 @@
-# README
+##Name
+body_weight_app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Overview
+You can record your body weight by Line graph in this app for free.
 
-Things you may want to cover:
+## URL
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Author
+Yu Utsugi [https://github.com/utsugiyu]
