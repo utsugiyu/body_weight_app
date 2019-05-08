@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BodyWeightApp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render "static_pages/head"%>
   </head>
 
   <body>
+    <header>
+      <div class="container">
+        <div class="header-logo">
+
+        </div>
+        <ul class="header-list">
+          <li></li>
+        </ul>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+    <ul class="footer-list">
+      <li><%= link_to("Contact", "#")%></li>
+    </ul>
+    </footer>
   </body>
 </html>
