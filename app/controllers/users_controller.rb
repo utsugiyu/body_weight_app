@@ -23,11 +23,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
     @user.destroy
     flash[:succes] = "The user was deleted"
     redirect_to login_url
