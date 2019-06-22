@@ -4,6 +4,8 @@
 <div class="container">
   <div class="signup-form">
     <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'shared/error_messages' %>
+
       <%= f.label :name%>
       <%= f.text_field :name %>
 
