@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 100},
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: true
+  validates :password, presence: true, length: {minimum: 6}, allow_nil: true
   has_secure_password
   attr_accessor :remember_token
 
