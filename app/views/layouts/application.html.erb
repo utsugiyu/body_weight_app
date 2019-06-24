@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= render "static_pages/head"%>
+    <%= render "layouts/head"%>
   </head>
-
   <body>
-    <header>
-      <div class="container">
-        <div class="header-logo">
-
-        </div>
-        <ul class="header-list">
-          <li></li>
-        </ul>
-      </div>
-    </header>
-    <% flash.each do |key,value| %>
-      <div class="alert alert-<%= key %>"><%= value %></div>
-    <% end %>
+    <%= render "layouts/header" %>
+    <%= render "layouts/flash" %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </body>
