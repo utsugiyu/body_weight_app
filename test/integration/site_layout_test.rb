@@ -8,8 +8,18 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
-  test "site layout test" do
+  test "header layout test" do
     get root_path
-
+    follow_redirect!
+    assert_template 'sessions/new'
+    assert_select "a[href=?]", root_path
+    log_in_as(@user)
+    assert is_logged_in?
+    assert_redirected_to user_path(@user)
+    follow_redirect!
+    assert_select "a[href=?]", root_path, count:2
+    assert_select "a[href=?]", edit_user_path(@user)
+    assert_select "a[href=?][data-method=?]", user_path(@user), "delete"
+    assert_match "Account", response.body
   end
 end
