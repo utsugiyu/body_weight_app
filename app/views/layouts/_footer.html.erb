@@ -1,9 +1,18 @@
-<footer>
-<% if logged_in? %>
+<footer class="footer">
+  <small>
+    Created by Yu Utsugi
+  </small>
+  <nav>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
+
+
+
+<!--<% if logged_in? %>
   <p><%= current_user.id%></p>
   <p><%= current_user.name%></p>
-<% end %>
-<ul class="footer-list">
-  <li><%= link_to("Contact", "#")%></li>
-</ul>
-</footer>
+<% end %>-->

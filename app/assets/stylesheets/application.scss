@@ -9,7 +9,40 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
+
  */
+ @import 'bootstrap';
+
+
+
+ $main-blue:#428bca;
+ $light-gray:#777777;
+
+ li{
+   list-style: none;
+ }
+
+
+ .dropdown-item{
+   color:$main-blue;
+ }
+
+
+ .footer{
+   margin-top: 100px;
+   border-top: 1px solid $main-blue;
+   small{
+     float:left;
+     color:$main-blue;
+   }
+   ul{
+     float:right;
+   }
+   li{
+     float:left;
+     margin-left: 15px;
+   }
+   a{
+     color:$main-blue;
+   }
+ }
