@@ -14,6 +14,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails', '4.3.1'
 
 
+
 group :production do
   gem 'pg', '0.20.0'
   gem 'fog', '1.42'
