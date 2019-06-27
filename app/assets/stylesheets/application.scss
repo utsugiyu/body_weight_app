@@ -18,15 +18,39 @@
  $main-blue:#428bca;
  $light-gray:#777777;
 
+
+
  li{
    list-style: none;
  }
 
+input{
+  width:100%;
+}
 
- .dropdown-item{
+.dropdown-item{
    color:$main-blue;
  }
 
+.page-title{
+  margin-top:40px;
+  text-align: center;
+}
+
+
+
+#session_remember_me{
+  width: auto;
+}
+
+
+#error_explanation li{
+  list-style-type:disc;
+}
+
+.btn{
+  margin-top: 10px;
+}
 
  .footer{
    margin-top: 100px;
