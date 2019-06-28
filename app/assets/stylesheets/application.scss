@@ -15,8 +15,9 @@
 
 
 
- $main-blue:#428bca;
+ $main-blue:#007bff;
  $light-gray:#777777;
+
 
 
 
@@ -41,6 +42,8 @@ input{
   margin-bottom: 1rem;
 }
 
+
+
 #session_remember_me{
   width: auto;
 }
@@ -55,11 +58,13 @@ input{
 }
 
  .footer{
-   margin-top: 100px;
-   border-top: 1px solid $main-blue;
+   height:60px;
+   padding-top: 10px;
+   color:white;
+   background-color: #007bff;
+
    small{
      float:left;
-     color:$main-blue;
    }
    ul{
      float:right;
@@ -67,8 +72,13 @@ input{
    li{
      float:left;
      margin-left: 15px;
+     opacity:0.7;
+     &:hover{
+       opacity:0.9;
+     }
    }
    a{
-     color:$main-blue;
+     color:white;
+     text-decoration: none;
    }
  }

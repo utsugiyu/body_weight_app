@@ -20,6 +20,5 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", root_path, count:2
     assert_select "a[href=?]", edit_user_path(@user)
     assert_select "a[href=?][data-method=?]", user_path(@user), "delete"
-    assert_match "Account", response.body
   end
 end
