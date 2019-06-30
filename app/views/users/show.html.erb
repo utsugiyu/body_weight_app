@@ -23,3 +23,25 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th>Weight</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @records.each do |record| %>
+    <tr>
+      <td><%= record.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+      <td><%= record.weight %> kg</td>
+        <td>
+          <a rel="nofollow" data-method="delete" href= <%= "/records/#{record.id}" %>>Delete</a>
+        </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @records %>

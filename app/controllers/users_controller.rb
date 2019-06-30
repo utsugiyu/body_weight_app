@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @record = current_user.records.build
+    @records = @user.records.page(params[:page]).per(7)
 
     if params[:duration] == "all"
       @graph_weights = @user.records.pluck(:weight)
