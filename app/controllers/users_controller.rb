@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    @record = current_user.records.build if logged_in?
   end
 
   def edit
@@ -48,12 +49,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
-    def logged_in_user
-      unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
 
     def correct_user
       @user = User.find_by(id: params[:id])
@@ -62,5 +57,4 @@ class UsersController < ApplicationController
         redirect_to(root_url)
       end
     end
-  end
 end

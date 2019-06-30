@@ -1,0 +1,8 @@
+<%= form_for(@record, url: "/users/#{@user.id}") do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :weight, "Body Weight" %>
+    <%= f.number_field :weight, placeholder: "Input your body weight...", class: "form-control", step: 0.01  %>
+  </div>
+  <%= f.submit "Save" %>
+<% end %>

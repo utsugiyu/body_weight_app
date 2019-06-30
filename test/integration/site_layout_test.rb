@@ -19,6 +19,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select "a[href=?]", root_path, count:2
     assert_select "a[href=?]", edit_user_path(@user)
-    assert_select "a[href=?][data-method=?]", user_path(@user), "delete"
+    assert_select "a[href=?][data-method=?]", logout_path, "delete"
   end
 end
