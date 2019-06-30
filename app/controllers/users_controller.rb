@@ -19,7 +19,24 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @record = current_user.records.build if logged_in?
+    @record = current_user.records.build
+
+    if params[:duration] == "all"
+      @graph_weights = @user.records.pluck(:weight)
+      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+    elsif params[:duration] == "3month"
+      @graph_weights = @user.records.pluck(:weight).take(90)
+      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(90)
+    elsif params[:duration] == "month"
+      @graph_weights = @user.records.pluck(:weight).take(30)
+      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(30)
+    else
+      @graph_weights = @user.records.pluck(:weight).take(7)
+      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(7)
+    end
+
+    @graph_weights.reverse!
+    @graph_date.reverse!
   end
 
   def edit

@@ -10,7 +10,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect create when not logged in" do
     assert_no_difference 'Record.count' do
-      post records_path, params: { record: { weight: 15.00 } }
+      post "/users/#{@user.id}", params: { record: { weight: 15.00 } }
     end
     assert_redirected_to login_url
   end
@@ -18,7 +18,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   test "create record  with logged in" do
     log_in_as(@user)
     assert_difference 'Record.count', 1 do
-      post records_path, params: { record: { weight: 15.00 } }
+      post "/users/#{@user.id}", params: { record: { weight: 15.00 } }
     end
     assert_not flash.empty?
     assert_redirected_to root_url

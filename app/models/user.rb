@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :records, dependent: :destroy
+  has_many :records, -> {order("created_at DESC")}, dependent: :destroy
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 20}
