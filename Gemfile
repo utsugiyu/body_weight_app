@@ -15,6 +15,7 @@ gem 'jquery-rails', '4.3.1'
 
 gem 'chart-js-rails', '~> 0.1.4'
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 
 
 
