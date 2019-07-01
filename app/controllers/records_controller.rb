@@ -22,7 +22,7 @@ class RecordsController < ApplicationController
 
     @graph_weights.reverse!
     @graph_date.reverse!
-    
+
     if @record.save
       flash[:success] = "Record created!"
       redirect_to root_url

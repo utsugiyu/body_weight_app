@@ -2,7 +2,7 @@
   <%= form_for(@record, url: "/users/#{@user.id}") do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="form-group record-form">
-      <%= f.number_field :weight, placeholder: "Input your body weight...", class: "form-control", step: 0.01  %>
+      <%= f.number_field :weight, placeholder: "Input weight...", class: "form-control", step: 0.01  %>
     </div>
     <%= f.submit "Save" %>
   <% end %>
