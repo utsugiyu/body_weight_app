@@ -2,6 +2,13 @@
 
 <%= render 'shared/record_form' %>
 
+<ul class="list-group list-group-horizontal">
+   <li class="list-group-item flex-fill border border-0 text-center"><%= link_to '3days', user_path(@user, duration: "3days") %></li>
+   <li class="list-group-item flex-fill border border-0 text-center"><%= link_to '7days', user_path(@user, duration: "week") %></li>
+   <li class="list-group-item flex-fill border border-0 text-center"><%= link_to '30days', user_path(@user, duration: "month") %></li>
+   <li class="list-group-item flex-fill border border-0 text-center"><%= link_to 'All', user_path(@user, duration: "all") %></li>
+</ul>
+
 <canvas id="myChart" width="900" height="400"></canvas>
 <script>
 var ctx = document.getElementById("myChart").getContext('2d');
@@ -15,7 +22,9 @@ var myChart = new Chart(ctx, {
             lineTension: 0,
             backgroundColor: 'rgba(0, 123, 255, 1.0)',
             borderColor: 'rgba(0, 123, 255, 1.0)',
-            fill: false
+            fill: false,
+            pointRadius: 5,
+            pointHoverRadius: 7
         }]
     },
     options: {

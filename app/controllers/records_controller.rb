@@ -5,19 +5,26 @@ class RecordsController < ApplicationController
   def create
     @user = current_user
     @record = current_user.records.build(record_params)
+    @records = @user.records.page(params[:page]).per(7)
 
     if params[:duration] == "all"
       @graph_weights = @user.records.pluck(:weight)
       @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
-    elsif params[:duration] == "3month"
-      @graph_weights = @user.records.pluck(:weight).take(90)
-      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(90)
     elsif params[:duration] == "month"
-      @graph_weights = @user.records.pluck(:weight).take(30)
-      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(30)
+      from = Time.zone.now - 720.hour
+      to = Time.zone.now
+      @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+    elsif params[:duration] == "week"
+      from = Time.zone.now - 168.hour
+      to = Time.zone.now
+      @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
     else
-      @graph_weights = @user.records.pluck(:weight).take(7)
-      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}.take(7)
+      from = Time.zone.now - 72.hour
+      to = Time.zone.now
+      @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
     end
 
     @graph_weights.reverse!
