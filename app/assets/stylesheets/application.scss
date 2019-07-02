@@ -21,6 +21,7 @@
 
 body {
   padding-top: 70px;
+  padding-bottom: 90px;
  }
 
 .new_record{
@@ -28,7 +29,19 @@ body {
 
 }
 
+.table-ul {
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+  padding-inline-start: 0px;
+  margin-top: 50px;
+}
 
+.table-ul li {
+  display: table-cell;
+  vertical-align: middle;
+}
 
  li{
    list-style: none;

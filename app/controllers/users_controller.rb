@@ -24,22 +24,22 @@ class UsersController < ApplicationController
 
     if params[:duration] == "all"
       @graph_weights = @user.records.pluck(:weight)
-      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+      @graph_date = @user.records.pluck(:created_at).map{|date| date.strftime("%-m/%-d %k:%M")}
     elsif params[:duration] == "month"
       from = Time.zone.now - 720.hour
       to = Time.zone.now
       @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
-      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%-m/%-d %k:%M")}
     elsif params[:duration] == "week"
       from = Time.zone.now - 168.hour
       to = Time.zone.now
       @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
-      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%-m/%-d %k:%M")}
     else
       from = Time.zone.now - 72.hour
       to = Time.zone.now
       @graph_weights = @user.records.where(created_at: from..to).pluck(:weight)
-      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%m/%d %R")}
+      @graph_date = @user.records.where(created_at: from..to).pluck(:created_at).map{|date| date.strftime("%-m/%-d %k:%M")}
     end
 
     @graph_weights.reverse!

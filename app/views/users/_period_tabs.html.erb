@@ -1,0 +1,6 @@
+<ul class="table-ul">
+   <li><%= link_to '3days', user_path(@user, duration: "3days") %></li>
+   <li><%= link_to '7days', user_path(@user, duration: "week") %></li>
+   <li><%= link_to '30days', user_path(@user, duration: "month") %></li>
+   <li><%= link_to 'All', user_path(@user, duration: "all") %></li>
+</ul>
