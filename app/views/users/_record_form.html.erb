@@ -1,4 +1,4 @@
-<div class="col-6 offset-3" >
+<div class="col-sm-6 offset-sm-3" >
   <%= form_for(@record, url: "/users/#{@user.id}?duration=#{params[:duration]}") do |f| %>
 
     <%= hidden_field_tag :duration, params[:duration] %>
