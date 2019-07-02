@@ -32,7 +32,7 @@ class RecordsController < ApplicationController
 
     if @record.save
       flash[:success] = "Record created!"
-      redirect_to root_url
+      redirect_to "/users/#{@user.id}?duration=#{params[:duration]}"
     else
       render 'users/show'
     end

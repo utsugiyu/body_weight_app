@@ -1,6 +1,6 @@
-<ul class="table-ul">
-   <li><%= link_to '3days', user_path(@user, duration: "3days") %></li>
-   <li><%= link_to '7days', user_path(@user, duration: "week") %></li>
-   <li><%= link_to '30days', user_path(@user, duration: "month") %></li>
-   <li><%= link_to 'All', user_path(@user, duration: "all") %></li>
+<ul class="buttons-ul">
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] != "week" && params[:duration] != "month" && params[:duration] != "all" %>" href= <%= "/users/#{@user.id}?duration=3days" %> role="button">3days</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "week" %>" href= <%= "/users/#{@user.id}?duration=week" %> role="button">Week</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "month" %>"  href= <%= "/users/#{@user.id}?duration=month" %> role="button">Month</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "all" %>"  href= <%= "/users/#{@user.id}?duration=all" %> role="button">All</a></li>
 </ul>

@@ -29,16 +29,21 @@ body {
 
 }
 
-.table-ul {
+.btn-block{
+  width:99%;
+}
+
+.buttons-ul {
   display: table;
   table-layout: fixed;
   text-align: center;
   width: 100%;
   padding-inline-start: 0px;
   margin-top: 50px;
+
 }
 
-.table-ul li {
+.buttons-ul li {
   display: table-cell;
   vertical-align: middle;
 }

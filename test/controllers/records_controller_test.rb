@@ -21,7 +21,6 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
       post "/users/#{@user.id}", params: { record: { weight: 15.00 } }
     end
     assert_not flash.empty?
-    assert_redirected_to root_url
   end
 
   test "should redirect destroy when not logged in" do
