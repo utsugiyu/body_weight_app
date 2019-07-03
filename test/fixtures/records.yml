@@ -17,3 +17,23 @@ most_recent:
   weight: 50.5
   created_at: <%= Time.zone.now %>
   user: michael
+
+dog_video:
+  weight: 90.55
+  created_at: <%= 3.hours.ago %>
+  user: michael
+
+a_video:
+  weight: 95
+  created_at: <%= 4.hours.ago %>
+  user: michael
+
+b_video:
+  weight: 90.55
+  created_at: <%= 5.hours.ago %>
+  user: michael
+
+c_video:
+  weight: 85.55
+  created_at: <%= 6.hours.ago %>
+  user: michael
