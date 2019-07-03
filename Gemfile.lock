@@ -275,6 +275,9 @@ GEM
       domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     io-like (0.3.0)
     ipaddress (0.8.3)
     jbuilder (2.9.1)
@@ -464,6 +467,7 @@ DEPENDENCIES
   fog (= 1.42)
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
+  i18n_generators
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
   kaminari
