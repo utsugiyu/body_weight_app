@@ -8,6 +8,7 @@ var myChart = new Chart(ctx, {
         labels:  <%= raw @graph_date %> ,
         datasets: [{
             label: "weight",
+            pointHitRadius:10,
             data: <%= raw @graph_weights %>,
             lineTension: 0,
             backgroundColor: 'rgba(0, 123, 255, 1.0)',
