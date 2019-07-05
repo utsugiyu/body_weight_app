@@ -32,7 +32,7 @@ class RecordsController < ApplicationController
 
     if @record.save
       flash[:success] = "Record created!"
-      redirect_to "/users/#{@user.id}#{"?duration=#{params[:duration]}" if params[:duration] != nil }#{"&page=#{params[:page]}" if params[:page] != nil }"
+      redirect_to "/users/#{@user.id}#{"?duration=#{params[:duration]}" if params[:duration] != nil }#{"&page=#{params[:page]}" if params[:duration] != nil && params[:page] != nil }#{"?page=#{params[:page]}" if params[:duration] == nil && params[:page] != nil }"
     else
       render 'users/show'
     end
