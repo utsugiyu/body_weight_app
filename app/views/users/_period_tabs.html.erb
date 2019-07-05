@@ -1,6 +1,6 @@
 <ul class="buttons-ul">
-   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] != "week" && params[:duration] != "month" && params[:duration] != "all" %>" href= <%= "/users/#{@user.id}?duration=3days" %> role="button">3days</a></li>
-   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "week" %>" href= <%= "/users/#{@user.id}?duration=week" %> role="button">Week</a></li>
-   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "month" %>"  href= <%= "/users/#{@user.id}?duration=month" %> role="button">Month</a></li>
-   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "all" %>"  href= <%= "/users/#{@user.id}?duration=all" %> role="button">All</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] != "week" && params[:duration] != "month" && params[:duration] != "all" %>" href= <%= "/users/#{@user.id}?duration=3days#{"&page=#{params[:page]}" if params[:page] != nil }" %> role="button">3days</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "week" %>" href= <%= "/users/#{@user.id}?duration=week#{"&page=#{params[:page]}" if params[:page] != nil }" %> role="button">Week</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "month" %>"  href= <%= "/users/#{@user.id}?duration=month#{"&page=#{params[:page]}" if params[:page] != nil }" %> role="button">Month</a></li>
+   <li><a class="btn btn-outline-primary btn-block <%= "active" if params[:duration] == "all" %>"  href= <%= "/users/#{@user.id}?duration=all#{"&page=#{params[:page]}" if params[:page] != nil }" %> role="button">All</a></li>
 </ul>

@@ -1,5 +1,5 @@
 <div class="col-sm-6 offset-sm-3" >
-  <%= form_for(@record, url: "/users/#{@user.id}?duration=#{params[:duration]}") do |f| %>
+  <%= form_for(@record, url: "/users/#{@user.id}#{"?duration=#{params[:duration]}" if params[:duration] != nil }#{"&page=#{params[:page]}" if params[:page] != nil }") do |f| %>
 
 
 
