@@ -70,14 +70,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_select "a[href=?]", "/users/#{@user.id}?page=2"
   end
-
-
-  test "keep paginate when send valid form" do
-    get "/users/#{@user.id}"
-  end
-
-  test "keep paginate when send invalid form" do
-
-  end
-
 end
