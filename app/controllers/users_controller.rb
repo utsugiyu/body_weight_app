@@ -67,6 +67,10 @@ class UsersController < ApplicationController
     redirect_to login_url
   end
 
+  def oauth
+    
+  end
+
   private
 
     def user_params
