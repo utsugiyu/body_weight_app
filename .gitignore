@@ -35,4 +35,4 @@
 
 /.env.development
 /.env.production
-/.env.locak
+/.env.local
