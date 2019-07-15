@@ -68,6 +68,7 @@ class UsersController < ApplicationController
   end
 
   def token
+    require 'net/http'
     request_token = params[:code]
 
     uri = URI.parse("https://www.healthplanet.jp/oauth/token")
