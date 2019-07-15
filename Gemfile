@@ -18,7 +18,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'oauth2'
 gem 'dotenv-rails'
-
+gem "http"
 
 
 group :production do

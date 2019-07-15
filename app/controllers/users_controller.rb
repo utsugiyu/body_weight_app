@@ -67,8 +67,25 @@ class UsersController < ApplicationController
     redirect_to login_url
   end
 
-  def oauth
-    
+  def token
+    request_token = params[:code]
+
+    uri = URI.parse("https://www.healthplanet.jp/oauth/token")
+    http = Net::HTTP.new(uri.host, uri.port)
+
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+    req = Net::HTTP::Post.new(uri.path)
+    req.set_form_data({'client_id' => ENV["API_ID"], 'client_secret' => ENV["API_SECRET"],
+       'redirect_uri' => 'https://body-w.herokuapp.com/users/callback', 'code' => request_token, 'grant_type' => 'authorization_code' })
+
+    res = http.request(req)
+
+  end
+
+  def callback
+    redirect_to "/users/#{current_user.id}"
   end
 
   private

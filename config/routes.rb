@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get    '/signup' => 'users#new'
   post '/signup'  => 'users#create'
   patch "/users/:id/edit"  => 'users#update'
+  get "/users/oauth" => 'users#token'
+  get "/users/callback" => 'users#callback'
   get    '/login' => 'sessions#new'
   post   '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
