@@ -84,8 +84,8 @@ class UsersController < ApplicationController
     )
     token = client.auth_code.get_token(
     params[:code],
-    redirect_uri: 'https://body-w.herokuapp.com/users/callback',
-    grant_type: authorization_code
+    {:redirect_uri => 'https://body-w.herokuapp.com/users/callback',
+    :grant_type => "authorization_code"}
     )
     redirect_to "/users/#{current_user.id}"
   end
