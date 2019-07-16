@@ -67,25 +67,26 @@ class UsersController < ApplicationController
     redirect_to login_url
   end
 
-  def token
-    require 'net/http'
-    request_token = params[:code]
-
-    uri = URI.parse("https://www.healthplanet.jp/oauth/token")
-    http = Net::HTTP.new(uri.host, uri.port)
-
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-    req = Net::HTTP::Post.new(uri.path)
-    req.set_form_data({'client_id' => ENV["API_ID"], 'client_secret' => ENV["API_SECRET"],
-       'redirect_uri' => 'https://body-w.herokuapp.com/users/callback', 'code' => request_token, 'grant_type' => 'authorization_code' })
-
-    res = http.request(req)
-
+  def oauth
+    client = OAuth2::Client.new(ENV["API_ID"], ENV["API_SECRET"], :site => 'https://www.healthplanet.jp', :authorize_url => ' https://www.healthplanet.jp/oauth/auth',
+              :token_url => 'https://www.healthplanet.jp/oauth/token')
+    redirect_uri = 'https://body-w.herokuapp.com/users/callback'
+    authorize_url = "https://www.healthplanet.jp/oauth/auth?client_id=#{ENV["API_ID"]}&redirect_uri=#{redirect_uri}&scope=innerscan&response_type=code"
+    redirect_to authorize_url
   end
 
   def callback
+    client = OAuth2::Client.new(ENV["API_ID"], ENV["API_SECRET"],
+    {
+      site: 'https://www.healthplanet.jp/',
+      token_url: 'oauth/token',
+    }
+    )
+    token = client.auth_code.get_token(
+    params[:code],
+    redirect_uri: 'https://body-w.herokuapp.com/users/callback',
+    grant_type: authorization_code
+    )
     redirect_to "/users/#{current_user.id}"
   end
 

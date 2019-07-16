@@ -15,8 +15,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                <a  href="/" class="dropdown-item">Home</a>
                <a  href="/users/<%= current_user.id.to_s %>/edit" class="dropdown-item">Settings</a>
-               <a  href=<%= "https://www.healthplanet.jp/oauth/auth?client_id=#{ENV["API_ID"]}&redirect_uri=https://body-w.herokuapp.com/users/oauth&scope=innerscan&response_type=code
-" %> class="dropdown-item">Health Planet</a>
+               <a  href="/users/oauth" class="dropdown-item">Health Planet</a>
                <div class="dropdown-divider"></div>
                <a  class="dropdown-item" rel="nofollow" data-method="delete" href="/logout" >Log Out</a>
             </div>
