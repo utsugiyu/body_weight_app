@@ -1,5 +1,8 @@
-desc "This task is called by the Heroku scheduler add-on"
+namespace :schedule do
 
-task :delete_last_user => :environment do
-  User.last.delete
+  desc "This task is called by the Heroku scheduler add-on"
+
+  task :get_data => :environment do
+    User.last.delete
+  end
 end
