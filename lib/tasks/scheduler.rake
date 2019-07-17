@@ -3,7 +3,7 @@ namespace :schedule do
   desc "This task is called by the Heroku scheduler add-on"
 
   task :get_data => :environment do
-    users = User.where.not(acccess_token: nil)
+    users = User.where.not(access_token: nil)
     secret = ENV['SECRET']
     encryptor = ::ActiveSupport::MessageEncryptor.new(secret, cipher: 'aes-256-cbc')
     client = OAuth2::Client.new(ENV["API_ID"], ENV["API_SECRET"],
