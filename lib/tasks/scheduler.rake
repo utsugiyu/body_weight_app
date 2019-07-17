@@ -14,7 +14,7 @@ namespace :schedule do
 
     users.each do |user|
       decrypt_access_token = encryptor.decrypt_and_verify(user.access_token)
-      access_token = OAuth::AccessToken.new(client, decrypt_access_token)
+      access_token = OAuth2::AccessToken.new(client, decrypt_access_token)
       resource_data = access_token.get('https://www.healthplanet.jp', :params => { 'tag' => '6021', 'date' => '0', 'from' => "#{Time.now - 60 * 10}", 'to' => "#{Time.now}" })
       data = JSON.parse(resource_data)
       puts data
