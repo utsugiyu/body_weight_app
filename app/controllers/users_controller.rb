@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     encrypt_refresh_token = encryptor.encrypt_and_sign(refresh_token)
     current_user.update_attributes(access_token: encrypt_access_token, refresh_token: encrypt_refresh_token)
 
-    redirect_to "/users/#{current_user.id}?token=#{token}&refresh=#{token.refresh_token}"
+    redirect_to "/users/#{current_user.id}?token=#{token.token}&refresh=#{token.refresh_token}"
   end
 
   private
