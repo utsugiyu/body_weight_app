@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include CreateEncryptor
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
@@ -92,7 +91,8 @@ class UsersController < ApplicationController
     access_token = token.token
     refresh_token = token.refresh_token
 
-    create_encriptor
+    secret = ENV['SECRET']
+    encryptor = ::ActiveSupport::MessageEncryptor.new(secret, cipher: 'aes-256-cbc')
     encrypt_access_token = encryptor.encrypt_and_sign(access_token)
     encrypt_refresh_token = encryptor.encrypt_and_sign(refresh_token)
     current_user.update_attributes(access_token: encrypt_access_token, refresh_token: encrypt_refresh_token)
