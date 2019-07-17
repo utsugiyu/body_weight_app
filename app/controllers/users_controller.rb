@@ -91,7 +91,7 @@ class UsersController < ApplicationController
     access_token = token[:access_token]
     refresh_token = token[:refresh_token]
 
-    secret = SecureRandom::hex(32)
+    secret = SecureRandom.random_bytes(32)
     encryptor = ::ActiveSupport::MessageEncryptor.new(secret, cipher: 'aes-256-cbc')
     encrypt_access_token = encryptor.encrypt_and_sign(access_token)
     encrypt_refresh_token = encryptor.encrypt_and_sign(refresh_token)
