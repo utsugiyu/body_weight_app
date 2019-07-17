@@ -87,6 +87,16 @@ class UsersController < ApplicationController
     {:redirect_uri => 'https://body-w.herokuapp.com/users/callback',
     :grant_type => "authorization_code"}
     )
+    token = JSON.parse(token)
+    access_token = token[:access_token]
+    refresh_token = token[:refresh_token]
+
+    secret = SecureRandom::hex(32)
+    encryptor = ::ActiveSupport::MessageEncryptor.new(secret, cipher: 'aes-256-cbc')
+    encrypt_access_token = encryptor.encrypt_and_sign(access_token)
+    encrypt_refresh_token = encryptor.encrypt_and_sign(refresh_token)
+    current_user.update_attributes(access_token: encrypt_access_token, refresh_token: encrypt_refresh_token)
+
     redirect_to "/users/#{current_user.id}"
   end
 

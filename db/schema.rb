@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_28_131954) do
+ActiveRecord::Schema.define(version: 2019_07_16_043850) do
 
   create_table "records", force: :cascade do |t|
     t.float "weight"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2019_06_28_131954) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "access_token"
+    t.string "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
