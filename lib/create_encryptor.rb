@@ -1,4 +1,4 @@
-module CreateEncryptorHelper
+module CreateEncryptor
 
   def create_encriptor
     secret = ENV['SECRET']
