@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     {:redirect_uri => 'https://body-w.herokuapp.com/users/callback',
     :grant_type => "authorization_code"}
     )
-    token = JSON.parse(token)
+
     access_token = token[:access_token]
     refresh_token = token[:refresh_token]
 
