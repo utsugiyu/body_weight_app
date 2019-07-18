@@ -15,9 +15,9 @@ namespace :schedule do
     users.each do |user|
       decrypt_access_token = encryptor.decrypt_and_verify(user.access_token)
       access_token = OAuth2::AccessToken.new(client, decrypt_access_token)
-      resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => "#{Time.now - 60 * 10}", 'to' => "#{Time.now}" })
+      resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => "20190710000000", 'to' => "20190718000000" })
       #data = JSON.parse(resource_data.body)
-      puts resource_data
+      puts resource_data.parsed
     end
   end
 end
