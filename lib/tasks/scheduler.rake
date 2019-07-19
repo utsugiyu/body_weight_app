@@ -26,4 +26,9 @@ namespace :schedule do
       end
     end
   end
+
+  task :token_refresh => :environment do
+    
+  end
+
 end
