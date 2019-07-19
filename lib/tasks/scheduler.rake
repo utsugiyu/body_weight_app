@@ -20,7 +20,7 @@ namespace :schedule do
       resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => from.strftime('%Y%m%d%H%M%S'), 'to' => to.strftime('%Y%m%d%H%M%S') })
 
       resource_data.parsed["data"].each do |data|
-        record = user.records.create(weight: data["keydata"].to_i)
+        record = user.records.create(weight: data["keydata"].to_f)
         date = data["date"].insert(4, "-").insert(7, "-").insert(10, " ").insert(13, ":").insert(16, ":00")
         record.update_attribute(:created_at, date)
       end
@@ -28,7 +28,19 @@ namespace :schedule do
   end
 
   task :token_refresh => :environment do
-    
+    users = User.where.not(access_token: nil)
+    secret = ENV['SECRET']
+    encryptor = ::ActiveSupport::MessageEncryptor.new(secret, cipher: 'aes-256-cbc')
+    client = OAuth2::Client.new(ENV["API_ID"], ENV["API_SECRET"],
+    {
+      site: 'https://www.healthplanet.jp/',
+    }
+    )
+
+    users.each do |user|
+      decrypt_access_token = encryptor.decrypt_and_verify(user.access_token)
+      old_access_token = OAuth2::AccessToken.new(client, decrypt_access_token)
+    end
   end
 
 end
