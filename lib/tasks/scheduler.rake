@@ -18,7 +18,7 @@ namespace :schedule do
       from = Time.now - 60 * 10
       to = Time.now
       resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => from.strftime('%Y%m%d%H%M%S'), 'to' => to.strftime('%Y%m%d%H%M%S') })
-      puts resource_data.parsed
+      puts resource_data.parsed["data"][0]
     end
   end
 end

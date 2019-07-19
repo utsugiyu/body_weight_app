@@ -48,7 +48,7 @@ class RecordsController < ApplicationController
 
   private
   def record_params
-    params.require(:record).permit(:weight)
+    params.require(:record).permit(:weight, :created_at)
   end
 
   def correct_user
