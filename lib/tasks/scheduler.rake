@@ -18,7 +18,12 @@ namespace :schedule do
       from = Time.now - 60 * 10
       to = Time.now
       resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => from.strftime('%Y%m%d%H%M%S'), 'to' => to.strftime('%Y%m%d%H%M%S') })
-      puts resource_data.parsed["data"][0]
+
+      resource_data.parsed["data"].each do |data|
+        record = user.records.create(weight: data["keydata"].to_i)
+        date = data["date"].insert(4, "-").insert(7, "-").insert(10, " ").insert(13, ":").insert(16, ":00")
+        record.update_attribute(:created_at, date)
+      end
     end
   end
 end
