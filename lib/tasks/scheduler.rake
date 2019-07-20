@@ -37,15 +37,18 @@ namespace :schedule do
     client = OAuth2::Client.new(ENV["API_ID"], ENV["API_SECRET"],
     {
       site: 'https://www.healthplanet.jp/',
+      token_url: 'oauth/token',
     }
     )
 
     users.each do |user|
-      decrypt_access_token = encryptor.decrypt_and_verify(user.access_token)
       decrypt_refresh_token = encryptor.decrypt_and_verify(user.refresh_token)
-      old_access_token = OAuth2::AccessToken.new(client, decrypt_access_token)
-      old_access_token.refresh_token = decrypt_refresh_token
-      new_access_token_object = old_access_token.refresh!(:params => {'client_id' => ENV["API_ID"], 'client_secret' => ENV["API_SECRET"], 'redirect_uri' => 'https://www.healthplanet.jp/success.html', 'grant_type' => 'refresh_token', 'refresh_token' => decrypt_refresh_token})
+      new_access_token_object = client.get_token(
+      {:redirect_uri => 'https://www.healthplanet.jp/success.html',
+      :grant_type => "refresh_token"
+      :refresh_token => decrypt_refresh_token
+      }
+      )
 
       encrypt_access_token = encryptor.encrypt_and_sign(new_access_token_object.token)
       encrypt_refresh_token = encryptor.encrypt_and_sign(new_access_token_object.refresh_token)
