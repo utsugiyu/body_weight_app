@@ -45,7 +45,7 @@ namespace :schedule do
       decrypt_refresh_token = encryptor.decrypt_and_verify(user.refresh_token)
       new_access_token_object = client.get_token(
       {:redirect_uri => 'https://www.healthplanet.jp/success.html',
-      :grant_type => "refresh_token"
+      :grant_type => "refresh_token",
       :refresh_token => decrypt_refresh_token
       }
       )
