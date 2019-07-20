@@ -15,17 +15,16 @@ namespace :schedule do
     users.each do |user|
       decrypt_access_token = encryptor.decrypt_and_verify(user.access_token)
       access_token = OAuth2::AccessToken.new(client, decrypt_access_token)
+      #heorku schedulerの走る間隔が最短8分、最長12分と不正確なため長めに取ってcreated_atで重複がない場合に保存する。
       from = Time.now - 60 * 12
       to = Time.now
       resource_data = access_token.get('https://www.healthplanet.jp/status/innerscan.json', :params => { 'access_token' => access_token.token,  'tag' => '6021', 'date' => '0', 'from' => from.strftime('%Y%m%d%H%M%S'), 'to' => to.strftime('%Y%m%d%H%M%S') })
 
       resource_data.parsed["data"].each do |data|
-        record = user.records.create(weight: data["keydata"].to_f)
         date = data["date"].insert(4, "-").insert(7, "-").insert(10, " ").insert(13, ":").insert(16, ":00")
-        record.update_attribute(:created_at, date)
-
-        if user.records.where(created_at: date).count > 1
-          record.destroy
+        if user.records.where(created_at: date).count == 0
+          record = user.records.create(weight: data["keydata"].to_f)
+          record.update_attribute(:created_at, date)
         end
       end
     end
