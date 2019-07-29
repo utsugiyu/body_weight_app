@@ -4,7 +4,7 @@ Name
 ### [Body-Weight App](https://body-w.herokuapp.com/)
 
 ## Description
-体重を記録してグラフで表示することができます。体重計メーカーであるタニタが提供している「[ヘルスプラネット](https://www.healthplanet.jp/)」と連携することで自動で体重を登録することが可能です(ヘルスプラネットに登録されたデータは10分以内に反映されます)。タニタが販売している[Wi-Fi、Bluetooth対応の体重計](https://www.healthplanet.jp/index.do#model)を使用すれば、入力の手間は完全になくなります。
+体重を記録してグラフで表示することができます。体重計メーカーであるタニタが提供している「[ヘルスプラネット](https://www.healthplanet.jp/)」とAPI連携することで自動で体重を登録することが可能です(ヘルスプラネットに登録されたデータは10分以内に反映されます)。タニタが販売している[Wi-Fi、Bluetooth対応の体重計](https://www.healthplanet.jp/index.do#model)を使用すれば、入力の手間は完全になくなります。
 
 ## Requirement
 「[ヘルスプラネット](https://www.healthplanet.jp/)」との連携を利用する場合には、あらかじめヘルスプラネットのアカウントが必要です。
@@ -31,7 +31,7 @@ Name
 アカウントの「Name」「Email」「Password」の変更が可能です。
 
 * Health Planet  
-「[ヘルスプラネット](https://www.healthplanet.jp/)」との連携を開始します。画面の遷移に沿って、あらかじめ作成しておいたヘルスプラネットのアカウントID・パスワードの入力、「認証する」ボタンのクリックを行ってください(ヘルスプラネットに登録されたデータは10分以内に反映されます)。「[ヘルスプラネット](https://www.healthplanet.jp/)」の利用方法は[公式サイト](https://www.healthplanet.jp/index.do#service)や体重計の説明書を参考にしてください。
+「[ヘルスプラネット](https://www.healthplanet.jp/)」とのAPI連携を開始します。画面の遷移に沿って、あらかじめ作成しておいたヘルスプラネットのアカウントID・パスワードの入力、「認証する」ボタンのクリックを行ってください(ヘルスプラネットに登録されたデータは10分以内に反映されます)。「[ヘルスプラネット](https://www.healthplanet.jp/)」の利用方法は[公式サイト](https://www.healthplanet.jp/index.do#service)や体重計の説明書を参考にしてください。
 
 * Log Out  
 ログアウトします。
