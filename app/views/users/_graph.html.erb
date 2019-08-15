@@ -11,7 +11,7 @@ var myChart = new Chart(ctx, {
             pointHitRadius:10,
             pointBorderColor: "white",
             data: <%= raw @graph_weights %>,
-            lineTension: 0,
+            lineTension: 0.1,
             backgroundColor: 'rgba(0, 123, 255, 1.0)',
             borderColor: 'rgba(0, 123, 255, 1.0)',
             fill: false,
