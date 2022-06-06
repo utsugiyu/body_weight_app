@@ -41,6 +41,3 @@ Name
 
 * Log Out  
 ログアウトします。
-
-## Author
-[Yu Utsugi](https://twitter.com/YuUtsugi)
